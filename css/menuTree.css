@@ -1,0 +1,6 @@
+
+/* 我想把list-style-type换成disc，但不好用，请老师指导*/
+li {
+   list-style-type: circle; 
+   display:block;
+}
