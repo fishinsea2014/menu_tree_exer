@@ -1,0 +1,25 @@
+<html>
+<head>
+        <script type="text/javascript" src="jquery/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript">
+function getEventTrigger(event)
+  { 
+  x=event.target; 
+//   alert("The id of the triggered element: "
+//   + x.id);
+    $(`#${x.id}`).children().toggle();
+  }
+</script>
+
+</head>
+<body >
+
+<div id="p1" onmousedown="getEventTrigger(event)">
+Click on this paragraph. An alert box will
+show which element triggered the event.
+<p>show something</p>
+</div>
+
+</body>
+</html>
