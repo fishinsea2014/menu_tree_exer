@@ -3,4 +3,6 @@
 li {
    list-style-type: circle; 
    display:block;
+   color:red;
+    margin-top: 2em;
 }

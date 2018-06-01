@@ -35,22 +35,27 @@ var data = [
     ];
 
     $(function(){
-      createMenuTree(data);
+      var _div = $('#menuTree');
+      menuTree.init(_div, data);
+
+
+      // createMenuTree(data);
     })
 
-    var _that = this;
+    var menuTree = {
+      init: function (_dom, data){
+        this.createMenuTree(_dom,data);
+      },
 
-
-    function createMenuTree(data){
-      var html='';
+      createMenuTree: function (_dom, data){
+        var _that = this; 
+        var html='';
         let n=0;
-        function makeMenu(data,level,curNode) {
-          
+        function makeMenu(data,level,curNode) {          
             n++;            
             for (k in data) {
-                if (data[k].name=='a2') console.log(data[k])
                 let leftPadding=level*0.6;
-                curNode.append(`<li class="menuItem ${n}" menu-level="${level}" style="padding-left:${leftPadding}em" onclick="_that.toggleChild(${n})">+${data[k].name}</li>`);                
+                curNode.append(`<li id="menuItem${n}" class="menuItem ${n}" menu-level="${level}" style="padding-left:${leftPadding}em" onmousedown="menuTree.toggleChildren(event)">+${data[k].name}</li>`);                
                 if (data[k].child !='undefined') {
                   makeMenu(data[k].child, level+1,$(`.menuItem.${n}`));
                 } else {
@@ -58,22 +63,13 @@ var data = [
                 }
             }
         }
+        makeMenu(data,0,_dom);
+      },
 
-        makeMenu(data,0,$('#menuTree'));
+      toggleChildren: function(event){
+        let x = event.target;
+
+        console.log($(`#${x.id}`));
+        $(`#${x.id}`).children().toggle();
+      }      
     }
-    
-
-
-    //？点击某个菜单项的时候，调用这个方法，把这个菜单项下的children都给隐藏，但是没有成功
-    function toggleChild(id){
-      console.log($(`li.menuItem.${id}`));
-      $(`li.menuItem.${id}`).children().toggle();
-      
-    }
-
-
-
-
-
-
-
