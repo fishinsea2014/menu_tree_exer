@@ -67,6 +67,7 @@ var data = [
       },
 
       toggleChildren: function(event){
+        event.stopPropagation();
         let x = event.target;
 
         console.log($(`#${x.id}`));
