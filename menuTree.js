@@ -71,22 +71,5 @@ var data = [
 
         console.log($(`#${x.id}`));
         $(`#${x.id}`).children().toggle();
-      }
-
-      
+      }      
     }
-
-
-
-    // //？点击某个菜单项的时候，调用这个方法，把这个菜单项下的children都给隐藏，但是没有成功
-    // function toggleChild(id){
-    //   
-      
-    // }
-
-
-
-
-
-
-
